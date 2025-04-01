@@ -9,7 +9,6 @@ export type Todo = {
 
 export const TodoApp = () => {
   const [inputText, setInputText] = useState("");
-
   const [buttonState, setButtonState] = useState<Todo | null>(null);
 
   //Step 4.  You reset this guy to now not just be a simple
@@ -54,7 +53,7 @@ export const TodoApp = () => {
     }
   };
 
-  const saveTodo = () => {
+  const saveEditedTodo = () => {
     if (!buttonState) return; // If buttonState is null, exit early.
     setTodos(
       todos.map((todo) =>
@@ -97,7 +96,7 @@ export const TodoApp = () => {
 
           {buttonState ? (
             //Step 7 - add your button state and add the two different buttons
-            <button className="btn btn-primary" onClick={saveTodo}>
+            <button className="btn btn-primary" onClick={saveEditedTodo}>
               Save Todo
             </button>
           ) : (

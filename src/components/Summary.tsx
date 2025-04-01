@@ -82,14 +82,81 @@ export const Summary = () => {
                   GETS <i>getItem()</i>
                 </li>
                 <li>
-                  Now set your input field to empty since once user hits the
-                  button you have capture their item and you have stored the
-                  item in localstorage, read it and added it to useState todos,
-                  and you have created a useEffect to read what is in local
-                  storage at render time. Now I am testing branch
+                  Now set your input field to empty. At this point you have
+                  <ul>
+                    <li>Capture Users Item</li>
+                    <li>Stored the Item in localStorage.</li>
+                    <li>
+                      You are reading it from there and adding it to useState
+                    </li>
+                    <li>
+                      You have created useEffect to read what you have in
+                      localStorage at render time.
+                    </li>
+                  </ul>
                 </li>
               </ul>
-              -
+            </li>
+            <li>
+              Now its time to go and create the UI component to hold the results
+              of the todos array. Work on doing a map() loop and calling a new
+              component with the rows of items. Create the static version of the
+              item row. At this point you can pass the{" "}
+              <strong>text part</strong>.
+            </li>
+            <li>
+              You will need to pass 3 pieces,
+              <ul>
+                <li>The text</li>
+                <li>A new function to handle edit logic</li>
+                <li>A new function to handle delete logic</li>
+              </ul>
+            </li>
+            <li>
+              Create the Edit <i>handleEditTodo()</i> function. In this step you
+              will find <i>find()</i> the id that is passed to you in the Todos
+              array. Next you will push that through you setInputText() to
+              update the inputText. Now this item is back on the input field.
+            </li>
+            <li>
+              Now since you have option to change the button the users has at
+              the input level, you will want to set a flag to know what state
+              you are at to turn on/off the right button. So set a useState for
+              this flag. And then pass the the item you found to it.
+              <pre>
+                <code> const [buttonState, setButtonState]</code>
+              </pre>
+            </li>
+            <li>
+              Now go and add logic to the button section. If has a 'Todo' item,
+              then turn on "Save Todo". Else if it is null, have the "Add Todo"
+              button.
+            </li>
+            <li>
+              Now since you have another button as choice, you need a new
+              function. You had the one to <strong>"Add Todo"</strong> but now
+              you need <strong>"Save Edited Todo"</strong>
+              <ul>
+                <li> So go start a new function for this button.</li>
+                <li>
+                  Here you will do a map() loop and if you find tone item passed
+                  you will use the spread operator to update the inputText. This
+                  is so your input field holds the one you want to change.
+                </li>
+                <li>
+                  Set <i>setButtonState()</i> to null since you have now
+                  execulted you udate.
+                </li>
+                <li>
+                  Set you <i> setInputText("") to empty</i>{" "}
+                </li>
+                <li>
+                  Last Step: Set up your delete <i>handleDeleteTodo()</i> button
+                  function. Hint, use your <i>filter()</i> because this will
+                  creat a new array without the item you filter out. Which will
+                  be the item you are deleting.
+                </li>
+              </ul>
             </li>
           </ol>
         </div>
