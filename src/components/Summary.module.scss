@@ -1,0 +1,48 @@
+.summaryWrapper {
+  width: 100%; /* Makes the width responsive */
+  max-width: 1024px; /* Keeps the maximum width */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.users,
+.logic {
+  margin: 10px 0px;
+  padding: 20px;
+  border-radius: 2px;
+}
+
+ol li {
+  margin: 5px 0px;
+}
+ol li i {
+  color: red;
+}
+pre code {
+  background-color: rgb(239, 239, 239);
+  font-weight: bold; /* Make the text bolder */
+}
+
+.logic ol {
+  width: 90%;
+}
+
+.users {
+  background-color: #e7f7f0;
+}
+
+.logic {
+  background-color: #e0eaf9;
+}
+
+.users ul {
+  list-style: none; /* Removes bullet points */
+  padding-left: 15px; /* Optional: Removes default padding */
+  margin: 0; /* Optional: Removes default margin */
+}
+
+h3 {
+  margin: 5px;
+}

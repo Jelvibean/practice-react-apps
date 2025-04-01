@@ -1,0 +1,46 @@
+.todoitem {
+  padding: 10px 10px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #dfdfdf;
+}
+
+.todoText {
+  width: 65%;
+  height: 34px;
+  display: flex; /* Enables Flexbox */
+  align-items: flex-end; /* Pushes text to the bottom */
+}
+
+.todoActions {
+  width: 35%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Adds spacing between buttons */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 779px) {
+  .todoitem {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align to the left */
+  }
+
+  .todoText {
+    width: 100%; /* Full width */
+    margin-bottom: 10px;
+  }
+
+  .todoActions {
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+  }
+
+  .todoActions button {
+    flex: 1; /* Make buttons take equal space */
+  }
+}
