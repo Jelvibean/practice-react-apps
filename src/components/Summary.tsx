@@ -86,7 +86,7 @@ export const Summary = () => {
                   button you have capture their item and you have stored the
                   item in localstorage, read it and added it to useState todos,
                   and you have created a useEffect to read what is in local
-                  storage at render time.
+                  storage at render time. Testing
                 </li>
               </ul>
               -
