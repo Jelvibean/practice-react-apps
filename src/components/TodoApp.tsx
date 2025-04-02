@@ -93,25 +93,34 @@ export const TodoApp = () => {
     <>
       <div className={styles.todoApp}>
         <h1>Daily Check List</h1>
-        <div className="d-flex">
-          <input
-            type="text"
-            placeholder="Add you item"
-            value={inputText}
-            onChange={detectUsersInput}
-            className={`form-control ${styles.inputStyling}`}
-          />
-
-          {buttonState ? (
-            //Step 7 - add your button state and add the two different buttons
-            <button className="btn btn-primary" onClick={saveEditedTodo}>
-              Save Todo
-            </button>
-          ) : (
-            <button className="btn btn-primary" onClick={addTodo}>
-              Add Todo
-            </button>
-          )}
+        <div className={styles.fieldWrapper}>
+          <div className={styles.inputwrapper}>
+            <input
+              type="text"
+              placeholder="Add you item"
+              value={inputText}
+              onChange={detectUsersInput}
+              className={`form-control ${styles.inputStyling}`}
+            />
+          </div>
+          <div className={styles.buttonWrapper}>
+            {buttonState ? (
+              //Step 7 - add your button state and add the two different buttons
+              <button
+                className={`btn btn-primary ${styles.mybutton}`}
+                onClick={saveEditedTodo}
+              >
+                Save Todo
+              </button>
+            ) : (
+              <button
+                className={`btn btn-primary ${styles.mybutton}`}
+                onClick={addTodo}
+              >
+                Add Todo
+              </button>
+            )}
+          </div>
         </div>
         <div>
           {todos.map((todo: Todo) => (
@@ -125,7 +134,7 @@ export const TodoApp = () => {
           ))}
         </div>
       </div>
-      <div className="hrspace">
+      <div className={styles.hrspace}>
         <hr />
         <hr />
         <hr />

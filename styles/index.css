@@ -19,6 +19,7 @@ button.btn {
   color: #efefef;
   width: 120px !important;
   height: 38px;
+  border: 1px solid purple;
 }
 
 .hrspace {
