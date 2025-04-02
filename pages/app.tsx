@@ -1,7 +1,6 @@
 import React from "react";
-import "./App.css";
-import { TodoApp } from "./components/TodoApp";
-import { Summary } from "./components/Summary";
+import { TodoApp } from "../src/components/TodoApp";
+import { Summary } from "../src/components/Summary";
 
 function App() {
   return (

@@ -6,6 +6,7 @@ dist/
 .env
 /.pnp
 .pnp.js
+.next/
 
 # testing
 /coverage
