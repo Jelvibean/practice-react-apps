@@ -1,6 +1,12 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import App from "./app"; // Import the global App wrapper if needed
+// pages/index.tsx
 
-export default function Home() {
-  return <App />; // Or put your main content here directly
-}
+const HomePage = () => {
+  return (
+    <>
+      {" "}
+      <div>Main content will go here later.</div>
+    </>
+  );
+};
+
+export default HomePage;

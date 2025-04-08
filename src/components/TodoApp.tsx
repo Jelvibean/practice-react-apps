@@ -44,10 +44,10 @@ export const TodoApp = () => {
 
   // Step 2 - Create the element you are reading from the input.
   const addTodo = () => {
-    if (inputText.trim()) {
+    if (inputText !== "") {
       const newTodo = {
         id: Date.now(),
-        text: inputText,
+        text: inputText.trim(),
       };
       //remember this is logging todos immediately after calling
       //setTodos([...todos, newTodo]);. However, state updates in React are
