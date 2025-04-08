@@ -8,6 +8,29 @@
   border: 1px solid #efefef;
 }
 
-button.btn .btn-primary {
-  background-color: rgb(163, 163, 251) !important;
+.fieldWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center; /* Ensure vertical alignment */
+}
+
+.inputwrapper {
+  flex: 1; /* Input will take up as much space as possible */
+  margin-right: 8px; /* Add space between input and button */
+}
+
+.buttonWrapper {
+  flex-shrink: 0; /* Prevent the button from shrinking */
+  width: auto; /* Allow the button to take as much width as needed */
+}
+
+.mybutton {
+  width: 100%;
+  height: 38px; /* Ensure button height is fixed */
+}
+
+.hrspace {
+  max-width: 1024px;
+  width: 100%;
+  margin: auto;
 }

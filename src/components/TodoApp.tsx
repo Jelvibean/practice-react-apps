@@ -10,23 +10,31 @@ export type Todo = {
 export const TodoApp = () => {
   const [inputText, setInputText] = useState("");
   const [buttonState, setButtonState] = useState<Todo | null>(null);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   //Step 4.  You reset this guy to now not just be a simple
   // const [todos, setTodos] = userState([]); now it will grab from
   // localStorage.
-  const [todos, setTodos] = useState(() => {
-    console.log("This only runs once when the component first mounts");
-    const savedTodo = localStorage.getItem("todos");
-    return savedTodo ? JSON.parse(savedTodo) : [];
-  });
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("Fetching todos from localStorage...");
+      const savedTodo = localStorage.getItem("todos");
+      if (savedTodo) {
+        setTodos(JSON.parse(savedTodo));
+      }
+    }
+  }, []); // Runs only once after mounting
 
   //Step 3
   // Why dont we now add it to localStorage
   // This happens first before step 3 when file loads.
   // First round it goes up and finds the [] to be empty.
+  // ✅ Store todos in localStorage when they change (client-side only)
   useEffect(() => {
-    console.log("you should see the latest update", todos);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    if (typeof window !== "undefined") {
+      console.log("Saving todos to localStorage", todos);
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
   }, [todos]);
 
   //Step 1 - capture the users words form the input field.
@@ -85,25 +93,34 @@ export const TodoApp = () => {
     <>
       <div className={styles.todoApp}>
         <h1>Daily Check List</h1>
-        <div className="d-flex">
-          <input
-            type="text"
-            placeholder="Add you item"
-            value={inputText}
-            onChange={detectUsersInput}
-            className={`form-control ${styles.inputStyling}`}
-          />
-
-          {buttonState ? (
-            //Step 7 - add your button state and add the two different buttons
-            <button className="btn btn-primary" onClick={saveEditedTodo}>
-              Save Todo
-            </button>
-          ) : (
-            <button className="btn btn-primary" onClick={addTodo}>
-              Add Todo
-            </button>
-          )}
+        <div className={styles.fieldWrapper}>
+          <div className={styles.inputwrapper}>
+            <input
+              type="text"
+              placeholder="Add you item"
+              value={inputText}
+              onChange={detectUsersInput}
+              className={`form-control ${styles.inputStyling}`}
+            />
+          </div>
+          <div className={styles.buttonWrapper}>
+            {buttonState ? (
+              //Step 7 - add your button state and add the two different buttons
+              <button
+                className={`btn btn-primary ${styles.mybutton}`}
+                onClick={saveEditedTodo}
+              >
+                Save Todo
+              </button>
+            ) : (
+              <button
+                className={`btn btn-primary ${styles.mybutton}`}
+                onClick={addTodo}
+              >
+                Add Todo
+              </button>
+            )}
+          </div>
         </div>
         <div>
           {todos.map((todo: Todo) => (
@@ -117,7 +134,7 @@ export const TodoApp = () => {
           ))}
         </div>
       </div>
-      <div className="hrspace">
+      <div className={styles.hrspace}>
         <hr />
         <hr />
         <hr />

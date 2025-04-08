@@ -161,7 +161,7 @@ export const Summary = () => {
           </ol>
         </div>
       </div>
-      <div className="hrspace">
+      <div className={styles.hrspace}>
         <hr />
         <hr />
         <hr />
