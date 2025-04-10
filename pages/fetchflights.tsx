@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 
-const fetchFlights = () => {
+type FlightData = {
+  id: number;
+  pricePerSeat: string;
+  seats: number;
+  availableAt: string;
+};
+
+const FetchFlights = () => {
   const [inputText, setInputText] = useState("");
-  const [clientData, setClientData] = useState([]);
+  const [clientData, setClientData] = useState<FlightData[] | null>(null);
 
   useEffect(() => {
     const fetchClientData = async () => {
@@ -22,65 +29,69 @@ const fetchFlights = () => {
 
   const detectUserInput = (event) => {
     setInputText(event.target.value);
-    // console.log(inputText);
   };
 
   const checkPrice = () => {
     if (inputText.trim()) {
       const inputstringtonum = Number(inputText);
 
-      const filteredData = clientData.filter((client) => {
+      const filteredData = clientData?.filter((client) => {
         const totalprice = Number(client.pricePerSeat) * client.seats;
         return totalprice < inputstringtonum;
       });
 
-      setClientData(filteredData);
+      setClientData(filteredData?.length ? filteredData : null);
     }
   };
 
   return (
-    <div>
-      <header>
-        <h4>Jet Finder</h4>
-      </header>
-      <section>
-        <label>Enter max price:</label>
-        <input
-          id="priceInputField"
-          type="text"
-          placeholder="Enter Desired Price"
-          value={inputText}
-          onChange={detectUserInput}
-          aria-describedby="priceInputHelp"
-        />
-        <small id="priceInputHelp">
-          "Enter the maximun price to filter you flights"
-        </small>
-      </section>
+    <>
+      <div>
+        <header>
+          <h4>Jet Finder</h4>
+        </header>
+        <div className="fieldWrapper">
+          <div className="inputwrapper">
+            <label>Enter max price:</label>
+            <input
+              id="priceInputField"
+              type="text"
+              placeholder="Enter Desired Price"
+              value={inputText}
+              onChange={detectUserInput}
+              aria-describedby="priceInputHelp"
+              className="form-control"
+            />
+            <small id="priceInputHelp" style={{ fontSize: "0.75em" }}>
+              "Enter the maximum price to filter your flights"
+            </small>
+          </div>
 
-      <section>
-        <button className="button" onClick={checkPrice}>
-          Filter by price
-        </button>
-      </section>
+          <div className="buttonWrapper">
+            <button className="btn btn-purple" onClick={checkPrice}>
+              Filter by price
+            </button>
+          </div>
+        </div>
 
-      <section className="results">
-        <ul role="list">
-          {clientData.map((client) => {
-            const totalprice = Number(client.pricePerSeat) * client.seats;
-            return (
-              <li className="user-info" key={client.id}>
-                <div className="price-data">Total: ${totalprice}</div>
-                <div className="client-name">
-                  City: &#9825; {client.availableAt}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    </div>
+        <section className="results">
+          <ul role="list">
+            {clientData?.map((client) => {
+              const totalprice = Number(client.pricePerSeat) * client.seats;
+              return (
+                <li className="user-info" key={client.id}>
+                  <div className="price-data">Total: ${totalprice}</div>
+                  <div className="client-name">
+                    City: &#9825; {client.availableAt}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </div>
+    </>
   );
 };
 
-export default fetchFlights;
+export default FetchFlights;

@@ -1,5 +1,36 @@
+//@import url("https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css");
+
+* {
+  box-sizing: border-box;
+}
+
+.btn-purple {
+  background-color: #6f42c1; /* Purple color */
+  color: white;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #5a2d9b; /* Darker purple on hover */
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
 .results {
   color: #828c94;
+  margin-top: 30px;
 }
 
 .user-info {
@@ -17,4 +48,20 @@
 .client-name {
   text-align: left;
   width: 40%;
+}
+
+.fieldWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center; /* Ensure vertical alignment */
+}
+
+.inputwrapper {
+  flex: 1; /* Input will take up as much space as possible */
+  margin-right: 8px; /* Add space between input and button */
+}
+
+.buttonWrapper {
+  flex-shrink: 0; /* Prevent the button from shrinking */
+  width: auto; /* Allow the button to take as much width as needed */
 }
