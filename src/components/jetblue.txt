@@ -1,0 +1,107 @@
+import { FC, useEffect, useState } from "react";
+
+//import "./style.css";
+
+type FlightData = {
+  id: number;
+  pricePerSeat: string;
+  seats: number;
+  availableAt: string;
+};
+
+export const App: FC<{ name: string }> = ({ name }) => {
+  const [inputText, setInputText] = useState("");
+  const [clientData, setClientData] = useState<FlightData[] | null>(null);
+
+  useEffect(() => {
+    const fetchClientData = async () => {
+      try {
+        const response = await fetch(
+          "https://67d98a2700348dd3e2ab8ad8.mockapi.io/jets/jetStore"
+        );
+        const data = await response.json();
+        setClientData(data);
+      } catch (error) {
+        console.log("oops something went wrong with you data.");
+      }
+    };
+
+    fetchClientData();
+  }, []);
+
+  const detectUserInput = (event) => {
+    setInputText(event.target.value);
+    // console.log(inputText);
+  };
+
+  const checkPrice = () => {
+    if (inputText.trim()) {
+      const inputstringtonum = Number(inputText);
+
+      const filteredData = clientData?.filter((client) => {
+        const totalprice = Number(client.pricePerSeat) * client.seats;
+        return totalprice < inputstringtonum;
+      });
+
+      setClientData(filteredData?.length ? filteredData : null);
+    }
+  };
+
+  return (
+    <div>
+      <header>
+        <h4>Jet Finder</h4>
+      </header>
+      <section>
+        <label>Enter max price:</label>
+        <input
+          id="priceInputField"
+          type="text"
+          placeholder="Enter Desired Price"
+          value={inputText}
+          onChange={detectUserInput}
+          aria-describedby="priceInputHelp"
+        />
+        <small id="priceInputHelp">
+          "Enter the maximun price to filter you flights"
+        </small>
+      </section>
+
+      <section>
+        <button className="button" onClick={checkPrice}>
+          Filter by price
+        </button>
+      </section>
+
+      <section className="results">
+        <ul role="list">
+          {clientData?.map((client) => {
+            const totalprice = Number(client.pricePerSeat) * client.seats;
+            return (
+              <li className="user-info" key={client.id}>
+                <div className="price-data">Total: ${totalprice}</div>
+                <div className="client-name">
+                  City: &#9825; {client.availableAt}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </div>
+  );
+};
+
+function aysnc() {
+  throw new Error("Function not implemented.");
+}
+
+// Keep accessibility in mind when building.
+
+// 1. Upon landing on page, fetch data from https://67d98a2700348dd3e2ab8ad8.mockapi.io/jets/jetStore and display the list as shown in the mockup below.
+// Total = seats x price per seat.
+// 2. When a price is entered and the button is clicked, the list should only show
+// results that are below that total price.
+// 3. When the white heart is clicked, next to the location, the heart would change to red, and that location would be stored somewhere in browser storage, so that next time a user visits the site, that location would be at the top of the list by default.
+//You can have more than one favorite.
+//https://react-t2z1dt.stackblitz.io/

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import styles from "./TodoApp.module.scss";
 import { TodoList } from "./TodoList";

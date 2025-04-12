@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react"; // come back needed help.
 
 const FetchAttempt = () => {

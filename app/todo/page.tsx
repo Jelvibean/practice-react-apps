@@ -1,7 +1,6 @@
 import React from "react";
-
-import { TodoApp } from "../src/components/TodoApp";
-import { Summary } from "../src/components/Summary";
+import { Summary } from "../../src/components/Summary";
+import { TodoApp } from "../../src/components/TodoApp";
 
 const fetchTodo = () => {
   return (
