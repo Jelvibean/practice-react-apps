@@ -1,29 +1,39 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css");
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1 {
+  font-weight: 800;
+  font-size: 1.5rem;
 }
 
-button.btn {
-  margin-left: 5px;
-  cursor: pointer;
-  border-radius: 5px 5px;
-  color: #efefef;
-  width: 120px !important;
-  height: 38px;
-  border: 1px solid purple;
+.results {
+  color: #828c94;
 }
 
-.hrspace {
-  max-width: 1024px;
+.user-info {
+  list-style: none;
+  border-bottom: 1px solid #b8b4b4;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  margin: auto;
+}
+
+.price-data {
+  width: 60%;
+}
+
+.client-name {
+  text-align: left;
+  width: 40%;
 }

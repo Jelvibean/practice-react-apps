@@ -1,6 +1,7 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import styles from "./TodoApp.module.scss";
-import TodoItem from "./TodoItem";
+import { TodoList } from "./TodoList";
 
 export type Todo = {
   id: number;
@@ -44,10 +45,10 @@ export const TodoApp = () => {
 
   // Step 2 - Create the element you are reading from the input.
   const addTodo = () => {
-    if (inputText.trim()) {
+    if (inputText !== "") {
       const newTodo = {
         id: Date.now(),
-        text: inputText,
+        text: inputText.trim(),
       };
       //remember this is logging todos immediately after calling
       //setTodos([...todos, newTodo]);. However, state updates in React are
@@ -76,11 +77,16 @@ export const TodoApp = () => {
   const handleEditTodo = (id: number) => {
     console.log("you made it to edit", id);
     const currentTodoToEdit = todos.find((todo) => todo.id === id);
-    console.log("you found him", currentTodoToEdit);
-    setInputText(currentTodoToEdit.text);
-    setButtonState(currentTodoToEdit);
+    if (currentTodoToEdit) {
+      console.log("you found him", currentTodoToEdit);
+      setInputText(currentTodoToEdit.text);
+      setButtonState(currentTodoToEdit);
 
-    console.log("your button state", buttonState);
+      console.log("your button state", buttonState);
+    } else {
+      // Handle the case where the todo is not found
+      console.log("Todo not found with id", id);
+    }
   };
 
   const handleDeleteTodo = (id: number) => {
@@ -100,7 +106,7 @@ export const TodoApp = () => {
               placeholder="Add you item"
               value={inputText}
               onChange={detectUsersInput}
-              className={`form-control ${styles.inputStyling}`}
+              className="form-control"
             />
           </div>
           <div className={styles.buttonWrapper}>
@@ -123,15 +129,11 @@ export const TodoApp = () => {
           </div>
         </div>
         <div>
-          {todos.map((todo: Todo) => (
-            // Step 5 create the item component an pass what is needed to it.
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onEdit={handleEditTodo}
-              onDelete={handleDeleteTodo}
-            ></TodoItem>
-          ))}
+          <TodoList
+            todos={todos}
+            onEdit={handleEditTodo}
+            onDelete={handleDeleteTodo}
+          />
         </div>
       </div>
       <div className={styles.hrspace}>
