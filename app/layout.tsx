@@ -3,6 +3,7 @@ import "../styles/globals.scss"; // Import global styles
 import { Header } from "../src/components/Header";
 import { Footer } from "../src/components/Footer";
 import type { Metadata } from "next";
+import React from "react";
 
 export const metadata = {
   title: "Yelvys Pet Projects",
