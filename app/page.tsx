@@ -1,4 +1,5 @@
 // pages/index.tsx
+import "../styles/globals.scss"; // Import global styles
 
 import React from "react";
 
@@ -31,6 +32,31 @@ const HomePage = () => {
         <li>
           <a href="/fetches/fetch-flights-hybrid">Fetch - Flights- Hybrid</a>
         </li>
+        <li>
+          <a href="/cache-example">Fetch & Caching on Client side</a>
+        </li>
+        <li>
+          <a href="fetches/fetch-flights-server-cache">
+            Fetching & Caching on server side
+          </a>
+        </li>
+      </ul>
+
+      <ul className="main-table">
+        <li className="column link">
+          <a href="/cache-example">Fetch & Caching on Client side</a>
+        </li>
+        <li className="column description">
+          This is the example of how you would fetch data and cache is on the
+          client side.
+        </li>
+
+        <li className="column link">
+          <a href="fetches/fetch-flights-server-cache">
+            Fetching & Caching on server side
+          </a>
+        </li>
+        <li className="column description">Two</li>
       </ul>
     </>
   );

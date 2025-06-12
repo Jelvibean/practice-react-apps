@@ -4,6 +4,7 @@ import { Header } from "../src/components/Header";
 import { Footer } from "../src/components/Footer";
 import type { Metadata } from "next";
 import React from "react";
+import { Providers } from "./providers";
 
 export const metadata = {
   title: "Yelvys Pet Projects",
@@ -19,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        {children}
+        <Providers>{children}</Providers>
         <Footer />
       </body>
     </html>

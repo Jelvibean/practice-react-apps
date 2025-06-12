@@ -16,7 +16,7 @@ export default function FetchFlights({
   const [inputText, setInputText] = useState("");
   const [clientData, setClientData] = useState<FlightData[]>(initialData);
 
-  const detectUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const detectUserInput = (event) => {
     setInputText(event.target.value);
   };
 
