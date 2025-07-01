@@ -34,9 +34,9 @@ const FetchDogs = () => {
           </span>
           My Breed Tables - Example of how to loop an array of objects
         </h1>
-        {breeds.map((breed: Breeds) => (
-          <div>{breed.name}</div>
-        ))}
+        {breeds.map((breed: Breeds, index) => {
+          return <div key={index}>{breed.name}</div>;
+        })}
 
         {/* {breeds.map((breed: Breeds) => {
           const lowerCaseTemp = breed.temperament?.toLowerCase() || "unknown"; // Default to 'unknown' if no temperament

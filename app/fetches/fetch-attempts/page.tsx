@@ -53,7 +53,7 @@ const FetchAttempt = () => {
         <ul>
           {userData.map((user: User) => {
             return (
-              <li>
+              <li key={user.id}>
                 {user.name} - {user.username}
               </li>
             );
