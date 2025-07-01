@@ -27,7 +27,7 @@ async function FetchDogsPage() {
           version
         </h1>
         {breeds.map((breed: Breeds) => (
-          <div>{breed.name}</div>
+          <div key={breed.name}>{breed.name}</div>
         ))}
       </div>
     </>

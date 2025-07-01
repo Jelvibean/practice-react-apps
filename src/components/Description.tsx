@@ -1,15 +1,28 @@
+import { JSX } from "react";
 import styles from "./Description.module.scss";
 
 type DescriptionType = {
-  text: React.ReactNode; // or JSX.Element if you want to be stricter
+  callback: (
+    pageDescription: JSX.Element,
+    pageLink?: JSX.Element
+  ) => JSX.Element;
+  PageDetails: {
+    pageDescription: JSX.Element;
+    pageLink?: JSX.Element;
+  };
 };
 
-export const Description = ({ text }: DescriptionType) => {
+export const Description = ({
+  callback,
+  PageDetails: { pageDescription, pageLink },
+}: DescriptionType) => {
   return (
     <>
       <div className={styles.border}>
         <strong>Description</strong>
-        <div className={styles.description}>{text}</div>
+        <div className={styles.description}>
+          {callback(pageDescription, pageLink)}
+        </div>
       </div>
     </>
   );
